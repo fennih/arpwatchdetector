@@ -1,0 +1,69 @@
+____________ ASSIGNMENT 2 Tests ____________
+____________________________________________
+
+- Checking for DNS Reachability
+
+[*] Checking for non authorized DNS reachability:
+Test passed, Blocked Query
+
+[*] Checking for authorized DNS 100.100.1.2 reachability:
+Test passed, Github's IP : 140.82.121.4
+
+- Checking for SSH connection to the Domain Controller
+Note: Please, if prompted for user password via ssh press 3 times the enter key to go ahead with the tests
+user@100.100.1.2's password: 
+user@100.100.1.2's password: 
+user@100.100.1.2's password: 
+
+Test passed, connection to SSH available
+
+- Checking HTTP/HTTPS connections to the Internet
+Test passed, HTTP/HTTPS allowed for this host
+
+- Checking HTTP/HTTPS connection via proxy :
+--2020-08-31 12:57:01--  https://github.com/
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘index.html.10’
+
+index.html.10                      [ <=>                                                ] 134.69K  --.-KB/s    in 0.08s   
+
+2020-08-31 12:57:01 (1.69 MB/s) - ‘index.html.10’ saved [137927]
+
+Test Passed, github.com main page downloaded in index.html via Proxy
+
+____________ ASSIGNMENT 3 Tests ____________
+____________________________________________
+In Assignment 3 there is no possibility for the Clients Net hosts to surf the internet without using the proxy. Moreover the Proxy, differently from assignment 2, has user/pass login required.
+
+- Checking correct Proxy with credentials connectivity
+
+[*] Test for HTTP/HTTPS connection via proxy witout credentials:
+--2020-08-31 12:57:01--  https://www.github.com/
+Connecting to 100.100.6.3:3128... connected.
+Proxy tunneling failed: Proxy Authentication RequiredUnable to establish SSL connection.
+Test passed, cannot connect to github via proxy without credentials
+
+[*] Test for  HTTP/HTTPS connection via proxy with credentials:
+--2020-08-31 12:57:01--  https://www.github.com/
+Connecting to 100.100.6.3:3128... connected.
+Proxy request sent, awaiting response... 301 Moved Permanently
+Location: https://github.com/ [following]
+--2020-08-31 12:57:01--  https://github.com/
+Connecting to 100.100.6.3:3128... connected.
+Proxy request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘index.html.11’
+
+index.html.11                      [ <=>                                                ] 134.69K  --.-KB/s    in 0.08s   
+
+2020-08-31 12:57:02 (1.69 MB/s) - ‘index.html.11’ saved [137927]
+
+Test Passed, github.com main page downloaded in index.html via Proxy
+
+[*]Test for  HTTP/HTTPS connections to the Internet without proxy :
+Test failed, HTTP/HTTPS allowed without proxy, it should not be possible
+
+- Checking for correct VPN Routing and Firewalling
