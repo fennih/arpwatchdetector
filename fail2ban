@@ -1,0 +1,39 @@
+# detect password authentication failures
+[apache]
+enabled  = true
+filter   = apache-auth
+action   = iptables-multiport[name=auth, port="http,https"]
+logpath  = /var/log/httpd/fail2ban_log
+bantime  = 3600
+maxretry = 3
+ignoreip = 192.0.2.0
+
+# detect spammer robots crawling email addresses
+[apache-badbots]
+enabled  = true
+filter   = apache-badbots
+action   = iptables-multiport[name=badbots, port="http,https"]
+logpath  = /var/log/httpd/fail2ban_log
+bantime  = 3600
+maxretry = 1
+ignoreip = 192.0.2.0
+
+# detect potential search for exploits
+[apache-noscript]
+enabled  = true
+filter   = apache-noscript
+action   = iptables-multiport[name=noscript, port="http,https"]
+logpath  = /var/log/httpd/fail2ban_log
+bantime  = 3600
+maxretry = 6
+ignoreip = 192.0.2.0
+
+# detect Apache overflow attempts
+[apache-overflows]
+enabled  = true
+filter   = apache-overflows
+action   = iptables-multiport[name=overflows, port="http,https"]
+logpath  = /var/log/httpd/fail2ban_log
+bantime  = 3600
+maxretry = 2
+ignoreip = 192.0.2.0
